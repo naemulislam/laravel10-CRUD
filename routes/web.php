@@ -19,6 +19,9 @@ Route::controller(StudentController::class)->group(function(){
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
+    Route::get('/edit/{student}', 'edit')->name('edit');
+    Route::put('/update/{student}', 'update')->name('update');
+    Route::get('/destory/{student}', 'destroy')->name('destroy');
 });
 
 // Route::get('/', function () {

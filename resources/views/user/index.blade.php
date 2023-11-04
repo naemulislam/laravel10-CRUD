@@ -5,6 +5,11 @@
             <div class="row">
                 <div class="col-md-10 mx-auto">
                     <div class="card">
+                        @if (Session::has('success'))
+                        <div class="alert alert-primary" role="alert">
+                            {{ Session::get('success')}}
+                        </div>
+                        @endif
                         <div class="card-header d-flex justify-content-between">
                             <h4 class="text-center">Student List</h4>
                             <a href="{{ route('create') }}" class="btn btn-success">Add</a>
@@ -24,17 +29,17 @@
                                 <tbody>
                                     @foreach ($students as $student)
                                         <tr>
-                                            <th scope="row">1</th>
+                                            <th scope="row">{{ $loop->iteration}}</th>
                                             <td>{{ $student->name}}</td>
                                             <td>{{ $student->email}}</td>
                                             <td>{{ $student->phone}}</td>
                                             <td>{{ $student->address}}</td>
                                             <td class="d-flex">
-                                                <a href="#" class="btn btn-primary mr-1">Edit</a>
-                                                <a href="#" class="btn btn-danger">Delte</a>
+                                                <a href="{{ route('edit', $student->id)}}" class="btn btn-primary mr-1">Edit</a>
+                                                <a href="{{ route('destroy', $student->id)}}" class="btn btn-danger">Delte</a>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                        @endforeach
                                 </tbody>
                             </table>
                         </div>
